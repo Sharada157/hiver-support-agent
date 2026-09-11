@@ -48,3 +48,34 @@ observed), adding a language-consistency risk not present in the other two brand
   `brand_replies` and `customer_tweets` counts]
 - [Fill in: intent tally from your Step 4 manual tagging — confirm ≥6 intents 
   had reasonable representation in your sample]
+
+## Intent Taxonomy Design
+Drafted 7 categories (6 real + Other) based on prior knowledge of SpotifyCares support patterns, then validated against 80 randomly sampled real customer tweets.
+
+- "Other" accounted for 21.2% of the sample (17 out of 80 tweets). This sits comfortably within the acceptable range (<25%), proving the 6 core functional categories successfully covered nearly 80% of real-world user situations without massive data leakage.
+- Found ambiguity between Playback/Technical Bug and Service Outage on tweets like *"It seems that i can't play any song from some artists. Lot's of people are talking about this bug."* (Tweet 5) — resolved by adding a specific social-proof rule: if a playback error is explicitly noted by the user as widespread or affecting multiple peers simultaneously, it scales into a Service Outage (Category 6); otherwise, isolated errors default to a Playback Bug (Category 1).
+- Deliberately did NOT create separate categories for third-party platform integrations (like Hulu bundles, Facebook authentication links, or SheerID configurations) because they easily mapped to Account Access or Billing/Subscription depending on the roadblock symptom. Creating individual categories for them would over-fragment the taxonomy without adding value to the core "good agent" troubleshooting framework.
+- Final taxonomy: 
+  1. Playback/Technical Bug
+  2. Account Access
+  3. Billing/Subscription
+  4. Content Availability
+  5. Feature Request/Complaint
+  6. Service Outage
+  7. Other
+
+
+
+# Draft Escalation Rules
+
+Escalate to human if ANY of the following:
+1. Intent = Billing/Subscription AND message mentions a specific dollar amount 
+   or the word "refund"
+2. Intent = Account Access AND message implies compromise ("hacked", "someone 
+   else logged in")
+3. Message contains anger/threat markers (profanity, "cancelling", "lawyer")
+4. Classifier confidence below [threshold — TBD once classifier is built]
+5. This is a repeat contact on the same thread (customer replied again after 
+   an earlier auto-reply)
+
+Otherwise, auto-handle.
