@@ -227,3 +227,7 @@ outputs/runs/*
 outputs/baselines/*
 !outputs/runs/.gitkeep
 !outputs/baselines/.gitkeep
+
+sample.csv
+data/raw/twcs/
+twcs/
