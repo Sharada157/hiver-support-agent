@@ -79,3 +79,54 @@ Escalate to human if ANY of the following:
    an earlier auto-reply)
 
 Otherwise, auto-handle.
+
+## Phase 4 — Data Preparation Results
+
+**Language filtering:**
+Language distribution across cleaned customer tweets:
+- English (en): 15,983
+- Unknown: 239
+- Polish: 136
+- Tagalog: 97
+- French: 90
+- Somali: 84
+- Indonesian: 67
+- Norwegian: 57
+- Afrikaans: 53
+- Dutch: 50
+(plus a long tail of other languages)
+
+Filtered to English-only, retaining 15,983 rows. Non-English tweets (~a few 
+hundred across many languages) excluded since taxonomy, prompts, and evaluation 
+are all designed for English; multilingual support explicitly out of scope for 
+this project.
+
+**Deduplication:**
+- Removed 6,468 exact duplicate rows
+- Removed 7 additional near-duplicate rows (normalized-template matching)
+
+**Triple construction (customer_message, brand_reply pairs):**
+- Total customer messages seen: 4,947
+- Kept (had a matching brand reply): 4,081
+- Dropped (no brand reply found): 866 (17.5%)
+
+This 17.5% drop rate is a meaningful limitation: our knowledge base and later 
+golden set only reflect issues SpotifyCares actually responded to in-thread. 
+Issues that went unanswered publicly, or were resolved entirely via DM with no 
+visible public reply, are systematically excluded from what the system can learn 
+from. This is a real source of bias worth flagging in the report's "what's 
+misleading about my headline number" section.
+
+**Knowledge base for grounding:**
+- Final knowledge base size: 4,081 (customer_message, brand_reply) pairs
+- Embedding model: sentence-transformers `all-MiniLM-L6-v2`
+- Embedding dimensionality: 384 (confirmed via output shape: 4081 x 384)
+- Chose local embeddings over TF-IDF for semantic (not just keyword) similarity 
+  matching, and over hosted embedding APIs to keep this step free, fast (local 
+  GPU), and fully reproducible offline for reviewers without requiring an 
+  additional API key
+
+**Note on Hugging Face rate limits:**
+Ran without an HF_TOKEN set, triggering a warning about unauthenticated request 
+limits. Did not block the run, but worth setting an HF_TOKEN env variable if 
+this step needs to be re-run frequently to avoid potential rate limiting.

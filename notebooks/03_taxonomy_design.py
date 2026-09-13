@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("data/raw/twcs.csv")
+df = pd.read_csv("data/raw/twcs/twcs.csv")
 df['created_at'] = pd.to_datetime(df['created_at'], format='%a %b %d %H:%M:%S +0000 %Y')
 
 FINAL_BRAND = "SpotifyCares"

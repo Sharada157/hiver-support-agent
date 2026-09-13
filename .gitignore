@@ -231,3 +231,5 @@ outputs/baselines/*
 sample.csv
 data/raw/twcs/
 twcs/
+*.kaggle-partial
+

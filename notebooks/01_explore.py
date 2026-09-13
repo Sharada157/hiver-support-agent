@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("data/raw/twcs.csv")
+df = pd.read_csv("data/raw/twcs/twcs.csv")
 
 print("Shape:", df.shape)
 print("\nColumns:", df.columns.tolist())
