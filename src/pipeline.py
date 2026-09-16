@@ -1,0 +1,160 @@
+import os
+import time
+import numpy as np
+import pandas as pd
+import httpx
+from dotenv import load_dotenv
+from sentence_transformers import SentenceTransformer
+from google import genai
+from huggingface_hub import InferenceClient
+
+load_dotenv()
+os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN", "")
+
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
+HF_MODEL = os.getenv("HF_MODEL", "Qwen/Qwen2.5-7B-Instruct")
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "https://ollama.com").rstrip("/")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gpt-oss:20b")
+if LLM_PROVIDER == "hf":
+    HF_TOKEN = os.getenv("HF_TOKEN")
+    if not HF_TOKEN:
+        raise RuntimeError("LLM_PROVIDER=hf requires HF_TOKEN to be set in the environment.")
+    llm_client = InferenceClient(model=HF_MODEL, token=HF_TOKEN)
+elif LLM_PROVIDER == "ollama":
+    OLLAMA_API_KEY = os.getenv("OLLAMA_API_KEY")
+    if not OLLAMA_API_KEY:
+        raise RuntimeError("LLM_PROVIDER=ollama requires OLLAMA_API_KEY to be set in the environment.")
+    llm_client = None
+else:
+    llm_client = genai.Client()
+embedder = SentenceTransformer('all-MiniLM-L6-v2')
+API_AVAILABLE = True
+
+knowledge_base = pd.read_csv("data/processed/knowledge_base.csv")
+kb_embeddings = np.load("data/processed/kb_embeddings.npy")
+
+TAXONOMY_DEFINITIONS = """
+1. Playback/Technical Bug - app crashes, skipping, freezing, broken features
+2. Account Access - login, password, 2FA, lockout issues
+3. Billing/Subscription - charges, refunds, plan/subscription issues
+4. Content Availability - missing songs/podcasts, licensing/region issues
+5. Feature Request/Complaint - wants a feature, dislikes a product decision
+6. Service Outage - widespread known issue
+7. Other - anything that doesn't clearly fit above
+"""
+
+
+def call_llm_with_retry(prompt, max_retries=5):
+    """Call the selected provider with bounded retries and no silent fallback."""
+    for attempt in range(max_retries):
+        try:
+            if LLM_PROVIDER == "hf":
+                response = llm_client.chat_completion(
+                    messages=[{"role": "user", "content": prompt}],
+                    max_tokens=int(os.getenv("HF_MAX_TOKENS", "512")),
+                )
+                return response.choices[0].message.content.strip()
+            if LLM_PROVIDER == "ollama":
+                response = httpx.post(
+                    f"{OLLAMA_BASE_URL}/v1/chat/completions",
+                    headers={"Authorization": f"Bearer {OLLAMA_API_KEY}"},
+                    json={
+                        "model": OLLAMA_MODEL,
+                        "messages": [{"role": "user", "content": prompt}],
+                        "temperature": 0,
+                    },
+                    timeout=float(os.getenv("OLLAMA_TIMEOUT_SECONDS", "120")),
+                )
+                response.raise_for_status()
+                return response.json()["choices"][0]["message"]["content"].strip()
+            response = llm_client.interactions.create(model=GEMINI_MODEL, input=prompt)
+            return response.output_text.strip()
+        except Exception as error:
+            error_text = str(error).lower()
+            if LLM_PROVIDER == "hf" and ("403" in error_text or "forbidden" in error_text):
+                raise RuntimeError(
+                    "Hugging Face rejected the request (403). Create a token with "
+                    "Inference Providers permission, enable provider access/credits, "
+                    "and set it as HF_TOKEN."
+                ) from error
+            if LLM_PROVIDER == "hf" and ("401" in error_text or "unauthorized" in error_text):
+                raise RuntimeError(
+                    "Hugging Face rejected HF_TOKEN (401). Create a new valid token "
+                    "and set it in the environment."
+                ) from error
+            if LLM_PROVIDER == "ollama" and ("401" in error_text or "403" in error_text or "unauthorized" in error_text or "forbidden" in error_text):
+                raise RuntimeError(
+                    "Ollama Cloud rejected OLLAMA_API_KEY. Create a new valid key, "
+                    "ensure it has cloud inference access, and update .env."
+                ) from error
+            is_rate_limited = "429" in error_text or "quota" in error_text or "rate limit" in error_text
+            if not is_rate_limited:
+                raise
+            if attempt == max_retries - 1:
+                raise RuntimeError(
+                    f"{LLM_PROVIDER} quota/rate limit persisted after retries; stopping instead of using a fallback."
+                ) from error
+            wait_time = int(os.getenv("LLM_RETRY_SECONDS", "15")) * (attempt + 1)
+            print(f"{LLM_PROVIDER} rate limited; waiting {wait_time}s (attempt {attempt + 1}/{max_retries})...")
+            time.sleep(wait_time)
+
+def classify_intent(text):
+    prompt = f"""Classify this customer support tweet into exactly one category.
+
+{TAXONOMY_DEFINITIONS}
+
+Tweet: "{text}"
+
+Respond with ONLY the category name."""
+    return call_llm_with_retry(prompt)
+
+def retrieve_similar(text, top_k=3):
+    query_emb = embedder.encode([text])[0]
+    sims = kb_embeddings @ query_emb / (
+        np.linalg.norm(kb_embeddings, axis=1) * np.linalg.norm(query_emb) + 1e-8
+    )
+    top_idx = np.argsort(sims)[-top_k:][::-1]
+    return knowledge_base.iloc[top_idx][['customer_message', 'brand_reply']].to_dict('records')
+
+def draft_reply(text, thread_context, retrieved_examples):
+    examples_text = "\n".join(
+        f"- Customer: {ex['customer_message']}\n  Reply: {ex['brand_reply']}"
+        for ex in retrieved_examples
+    )
+    prompt = f"""You are a SpotifyCares support agent. Write a short, helpful reply
+to the customer's message, in a tone consistent with these real past examples.
+Do NOT invent specific facts (order numbers, dates, amounts) not present in the input.
+
+Past similar cases:
+{examples_text}
+
+Thread context: {thread_context}
+Customer message: {text}
+
+Reply:"""
+    return call_llm_with_retry(prompt)
+
+def decide_escalation(text, intent, thread_context=""):
+    text_lower = str(text).lower()
+
+    if intent == "Billing/Subscription" and any(kw in text_lower for kw in ["refund", "$", "charged twice"]):
+        return True, "Billing issue mentions refund/charge — financial liability"
+    if intent == "Account Access" and any(kw in text_lower for kw in ["hacked", "unauthorized", "not me"]):
+        return True, "Possible account compromise — needs human verification"
+    if any(kw in text_lower for kw in ["lawyer", "cancelling", "furious", "unacceptable"]):
+        return True, "Anger/threat language detected"
+    return False, "No escalation trigger matched"
+
+def run_agent(text, thread_context=""):
+    intent = classify_intent(text)
+    retrieved = retrieve_similar(text)
+    reply = draft_reply(text, thread_context, retrieved)
+    escalate, reason = decide_escalation(text, intent, thread_context)
+    return {
+        "intent": intent,
+        "reply": reply,
+        "escalate": escalate,
+        "escalate_reason": reason,
+        "retrieved_examples": retrieved
+    }
