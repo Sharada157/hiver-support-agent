@@ -2,7 +2,7 @@ import pandas as pd
 import re
 
 print("Loading 2.8M rows dataset...")
-df = pd.read_csv("data/raw/twcs.csv")   
+df = pd.read_csv("data/raw/twcs/twcs.csv")
 df['created_at'] = pd.to_datetime(df['created_at'], format='%a %b %d %H:%M:%S +0000 %Y')
 
 # CRITICAL OPTIMIZATION: Index the dataframe ONCE here, out of the function loops

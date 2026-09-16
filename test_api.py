@@ -1,12 +1,18 @@
+import os
+import dotenv
 from google import genai
 
-client = genai.Client()  # reads GEMINI_API_KEY from env automatically
+# Load environment variables from .env file
+dotenv.load_dotenv()
 
-# To this:
-interaction = client.interactions.create(
-    model="gemini-3.6-flash",
-    # ... other arguments
-    input="Say hello in one sentence."
+# Initialize Gemini client using GEMINI_API_KEY from environment
+client = genai.Client()
+
+# Generate content
+response = client.models.generate_content(
+    model="gemini-2.5-flash",
+    contents="Say hello in one sentence."
 )
 
-print(interaction.output_text)
+print(response.text)
+

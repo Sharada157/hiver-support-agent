@@ -2,7 +2,7 @@ import pandas as pd
 import re
 
 print("Loading dataset and building indices...")
-df = pd.read_csv("data/raw/twcs.csv")
+df = pd.read_csv("data/raw/twcs/twcs.csv")
 df['created_at'] = pd.to_datetime(df['created_at'], format='%a %b %d %H:%M:%S +0000 %Y')
 
 # Target brands to test and cross-verify
