@@ -130,3 +130,16 @@ misleading about my headline number" section.
 Ran without an HF_TOKEN set, triggering a warning about unauthenticated request 
 limits. Did not block the run, but worth setting an HF_TOKEN env variable if 
 this step needs to be re-run frequently to avoid potential rate limiting.
+
+## Phase 6 - Baseline Implementation Notes
+
+- Trivial baseline: always predicts the most frequent training-set intent
+  (Playback/Technical Bug), uses a fixed generic reply, and never escalates.
+- Simple baseline: word-boundary regex keyword rules for intent and TF-IDF
+  cosine similarity for nearest-neighbor reply retrieval from the knowledge
+  base; escalates only on explicit refund or dollar-amount keywords.
+- Process note: baselines were initially built alongside early full-agent work
+  rather than strictly before it, and simple retrieval was upgraded from a
+  crude word-overlap heuristic to TF-IDF partway through development. Baseline
+  logic was not tuned against full-agent results, but chronology deviated from
+  the ideal baselines-first order.

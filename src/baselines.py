@@ -1,5 +1,9 @@
-import pandas as pd
 import re
+
+import numpy as np
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 INTENTS = [
     "Playback/Technical Bug", "Account Access", "Billing/Subscription",
@@ -17,19 +21,41 @@ def trivial_predict(text, thread_context=""):
 
 # ---- Simple baseline: keyword rules + nearest-neighbor reply ----
 KEYWORD_RULES = [
-    ("Service Outage", ("down", "outage", "server")),
-    ("Account Access", ("login", "log in", "password", "2fa", "locked out")),
-    ("Billing/Subscription", ("charge", "charged", "refund", "subscription", "billing")),
-    ("Content Availability", ("missing", "unavailable", "removed", "region")),
-    ("Feature Request/Complaint", ("please add", "wish", "feature", "why did you remove")),
-    ("Playback/Technical Bug", ("crash", "skip", "freeze", "bug", "error")),
+    ("Service Outage", (r"\bdown\b", r"\boutage\b", r"\bserver\b")),
+    ("Account Access", (r"\blogin\b", r"\blog in\b", r"\bpassword\b", r"\b2fa\b", r"\blocked out\b")),
+    ("Billing/Subscription", (r"\bcharge\b", r"\bcharged\b", r"\brefund\b", r"\bsubscription\b", r"\bbilling\b")),
+    ("Content Availability", (r"\bmissing\b", r"\bunavailable\b", r"\bremoved\b", r"\bregion\b")),
+    ("Feature Request/Complaint", (r"\bplease add\b", r"\bwish\b", r"\bfeature\b", r"\bwhy did you remove\b")),
+    ("Playback/Technical Bug", (r"\bcrash\b", r"\bskip\b", r"\bfreeze\b", r"\bbug\b", r"\berror\b")),
 ]
+
+_tfidf_vectorizer = None
+_kb_tfidf_matrix = None
+_kb_reference = None
+
+
+def _init_tfidf(knowledge_base):
+    global _tfidf_vectorizer, _kb_tfidf_matrix, _kb_reference
+    if _tfidf_vectorizer is None:
+        _tfidf_vectorizer = TfidfVectorizer(stop_words="english", max_features=5000)
+        _kb_tfidf_matrix = _tfidf_vectorizer.fit_transform(
+            knowledge_base["customer_message"].astype(str)
+        )
+        _kb_reference = knowledge_base.reset_index(drop=True)
+
+
+def tfidf_nearest_reply(text, knowledge_base):
+    _init_tfidf(knowledge_base)
+    query_vector = _tfidf_vectorizer.transform([text])
+    similarities = cosine_similarity(query_vector, _kb_tfidf_matrix)[0]
+    best_index = int(np.argmax(similarities))
+    return _kb_reference.iloc[best_index]["brand_reply"], float(similarities[best_index])
 
 def simple_predict(text, thread_context="", knowledge_base=None):
     text_lower = str(text).lower()
     intent = "Other"
-    for label, keywords in KEYWORD_RULES:
-        if any(kw in text_lower for kw in keywords):
+    for label, patterns in KEYWORD_RULES:
+        if any(re.search(pattern, text_lower) for pattern in patterns):
             intent = label
             break
 
@@ -37,15 +63,7 @@ def simple_predict(text, thread_context="", knowledge_base=None):
 
     reply = "Thanks for letting us know, we'll look into this."
     if knowledge_base is not None and len(knowledge_base) > 0:
-        # crude nearest neighbor: find a KB row sharing the most words
-        text_words = set(text_lower.split())
-        best_overlap, best_reply = 0, reply
-        for _, row in knowledge_base.iterrows():
-            kb_words = set(str(row['customer_message']).lower().split())
-            overlap = len(text_words & kb_words)
-            if overlap > best_overlap:
-                best_overlap, best_reply = overlap, row['brand_reply']
-        reply = best_reply
+        reply, _similarity_score = tfidf_nearest_reply(text, knowledge_base)
 
     return {
         "intent": intent,
