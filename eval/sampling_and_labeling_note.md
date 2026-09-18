@@ -17,3 +17,14 @@ escalation agreement = 96.00%, kappa = 0.648.
 **Reply-quality judge agreement:** Separately, LLM-judge reply-grounding scores
 were checked against human scoring on a 25-example subset (see
 `judge_agreement_sample.csv`), Spearman correlation = 0.353 (p = 0.08365).
+
+
+
+
+**Note on judge-human correlation:** The correlation (0.353, p=0.084) is weak 
+and not statistically significant at conventional thresholds, likely due to 
+the small sample size (25 examples) and possible inconsistency in how the 
+human scorer applied the 1-5 rubric across sittings. This is flagged 
+explicitly rather than treated as a passing check — it means the LLM judge's 
+reply-quality scores should be treated as a rough signal, not a precise 
+metric, until a larger or more carefully controlled agreement study is done.
