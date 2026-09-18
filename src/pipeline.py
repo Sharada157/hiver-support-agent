@@ -1,4 +1,5 @@
 import os
+import re
 import time
 import numpy as np
 import pandas as pd
@@ -34,15 +35,38 @@ API_AVAILABLE = True
 knowledge_base = pd.read_csv("data/processed/knowledge_base.csv")
 kb_embeddings = np.load("data/processed/kb_embeddings.npy")
 
-TAXONOMY_DEFINITIONS = """
+TAXONOMY_WITH_EXAMPLES = """
 1. Playback/Technical Bug - app crashes, skipping, freezing, broken features
+    Example: "Everything else works, it's just that the music won't play."
+
 2. Account Access - login, password, 2FA, lockout issues
+    Example: "Deactivated Facebook and cannot log on to Spotify."
+
 3. Billing/Subscription - charges, refunds, plan/subscription issues
+    Example: "You charged me twice for my service this month."
+
 4. Content Availability - missing songs/podcasts, licensing/region issues
+    Example: "This album is not available on Spotify."
+
 5. Feature Request/Complaint - wants a feature, dislikes a product decision
-6. Service Outage - widespread known issue
-7. Other - anything that doesn't clearly fit above
+    Example: "I really want to be able to delete radio stations from my recently played."
+
+6. Service Outage - widespread known issue, or users ask whether Spotify is down
+    Example: "Is Spotify down or is my phone being stupid?"
+
+7. Other - praise, spam, ambiguous, off-topic, or conversational messages
+    Example: "DM sent, thanks."
 """
+
+INTENTS = {
+     "Playback/Technical Bug",
+     "Account Access",
+     "Billing/Subscription",
+     "Content Availability",
+     "Feature Request/Complaint",
+     "Service Outage",
+     "Other",
+}
 
 
 def call_llm_with_retry(prompt, max_retries=5):
@@ -99,15 +123,47 @@ def call_llm_with_retry(prompt, max_retries=5):
             print(f"{LLM_PROVIDER} rate limited; waiting {wait_time}s (attempt {attempt + 1}/{max_retries})...")
             time.sleep(wait_time)
 
+def classify_intent_with_confidence(text):
+    prompt = f"""Classify this customer support tweet into exactly one category, using the examples as a guide.
+
+{TAXONOMY_WITH_EXAMPLES}
+
+Tweet to classify: "{text}"
+
+Respond in exactly this format:
+Category: <category name>
+Confidence: <number from 0.0 to 1.0>"""
+    try:
+        raw = call_llm_with_retry(prompt)
+    except Exception as error:
+        print(f"WARNING: classification failed for {str(text)[:50]}... defaulting to Other")
+        return "Other", 0.0, True
+
+    category = "Other"
+    confidence = 0.0
+    for line in raw.splitlines():
+        key, separator, value = line.partition(":")
+        if not separator:
+            continue
+        if key.strip().lower() == "category":
+            category = value.strip()
+        elif key.strip().lower() == "confidence":
+            try:
+                confidence = float(value.strip())
+            except ValueError:
+                confidence = 0.0
+
+    if category not in INTENTS:
+        category = "Other"
+        confidence = 0.0
+    confidence = max(0.0, min(1.0, confidence))
+    return category, confidence, False
+
+
 def classify_intent(text):
-    prompt = f"""Classify this customer support tweet into exactly one category.
-
-{TAXONOMY_DEFINITIONS}
-
-Tweet: "{text}"
-
-Respond with ONLY the category name."""
-    return call_llm_with_retry(prompt)
+    """Return only the validated category for legacy callers."""
+    intent, _, _ = classify_intent_with_confidence(text)
+    return intent
 
 def retrieve_similar(text, top_k=3):
     query_emb = embedder.encode([text])[0]
@@ -135,7 +191,34 @@ Customer message: {text}
 Reply:"""
     return call_llm_with_retry(prompt)
 
-def decide_escalation(text, intent, thread_context=""):
+def check_for_hallucinated_facts(generated_reply, text, thread_context, retrieved_examples):
+    """Flag specific numeric facts that are not present in available source text."""
+    source_text = " ".join([
+        str(text),
+        str(thread_context),
+        *[
+            f"{example['customer_message']} {example['brand_reply']}"
+            for example in retrieved_examples
+        ],
+    ])
+    fact_pattern = r"\$\d+(?:\.\d{2})?|\b\d{4,}\b|\b\d{1,2}/\d{1,2}/\d{2,4}\b"
+    reply_facts = re.findall(fact_pattern, str(generated_reply))
+    source_facts = set(re.findall(fact_pattern, source_text))
+    unsupported = [fact for fact in reply_facts if fact not in source_facts]
+    return {
+        "flagged": bool(unsupported),
+        "unsupported_facts": unsupported,
+    }
+
+
+def decide_escalation(
+    text,
+    intent,
+    confidence=0.0,
+    thread_context="",
+    num_turns=1,
+    confidence_threshold=0.9,
+):
     text_lower = str(text).lower()
 
     if intent == "Billing/Subscription" and any(kw in text_lower for kw in ["refund", "$", "charged twice"]):
@@ -144,17 +227,40 @@ def decide_escalation(text, intent, thread_context=""):
         return True, "Possible account compromise — needs human verification"
     if any(kw in text_lower for kw in ["lawyer", "cancelling", "furious", "unacceptable"]):
         return True, "Anger/threat language detected"
+    if confidence < confidence_threshold:
+        return True, f"Low classifier confidence ({confidence:.2f}), below threshold ({confidence_threshold:.2f})"
+    if num_turns >= 4:
+        return True, f"Repeat contact - {num_turns} turns in thread without apparent resolution"
     return False, "No escalation trigger matched"
 
-def run_agent(text, thread_context=""):
-    intent = classify_intent(text)
+
+def run_agent(text, thread_context="", num_turns=1):
+    start_time = time.perf_counter()
+    intent, confidence, intent_fallback = classify_intent_with_confidence(text)
     retrieved = retrieve_similar(text)
     reply = draft_reply(text, thread_context, retrieved)
-    escalate, reason = decide_escalation(text, intent, thread_context)
+    hallucination_check = check_for_hallucinated_facts(
+        reply, text, thread_context, retrieved
+    )
+    escalate, reason = decide_escalation(
+        text,
+        intent,
+        confidence,
+        thread_context,
+        num_turns,
+    )
     return {
+        "input_text": text,
+        "thread_context": thread_context,
         "intent": intent,
+        "confidence": confidence,
+        "intent_used_fallback": intent_fallback,
+        "num_turns": num_turns,
         "reply": reply,
+        "hallucination_flagged": hallucination_check["flagged"],
+        "hallucination_details": hallucination_check["unsupported_facts"],
         "escalate": escalate,
         "escalate_reason": reason,
-        "retrieved_examples": retrieved
+        "retrieved_examples": retrieved,
+        "latency_seconds": round(time.perf_counter() - start_time, 2),
     }
