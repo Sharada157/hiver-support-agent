@@ -1,0 +1,1406 @@
+{
+  "source": "outputs/runs/full_agent_predictions_with_confidence.csv",
+  "intent_accuracy": 0.675,
+  "per_example": [
+    {
+      "id": "golden_001",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_002",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_003",
+      "gold_intent": "Other",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_004",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_005",
+      "gold_intent": "Other",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_006",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_007",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_008",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_009",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_010",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_011",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_012",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_013",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_014",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_015",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": true,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_016",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_017",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_018",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Other",
+      "gold_escalate": true,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_019",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_020",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_021",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_022",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": true,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_023",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_024",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_025",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_026",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_027",
+      "gold_intent": "Account Access",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_028",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_029",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_030",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_031",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_032",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_033",
+      "gold_intent": "Other",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_034",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_035",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_036",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_037",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_038",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_039",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": true,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_040",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_041",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_042",
+      "gold_intent": "Other",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_043",
+      "gold_intent": "Other",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_044",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_045",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_046",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_047",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_048",
+      "gold_intent": "Other",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_049",
+      "gold_intent": "Other",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_050",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_051",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_052",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_053",
+      "gold_intent": "Other",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_054",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_055",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_056",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_057",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_058",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_059",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_060",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_061",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_062",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_063",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_064",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_065",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_066",
+      "gold_intent": "Other",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_067",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": true,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_068",
+      "gold_intent": "Other",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_069",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_070",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_071",
+      "gold_intent": "Other",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_072",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_073",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_074",
+      "gold_intent": "Other",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_075",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_076",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_077",
+      "gold_intent": "Other",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_078",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_079",
+      "gold_intent": "Other",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_080",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_081",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_082",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_083",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_084",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_085",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_086",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_087",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_088",
+      "gold_intent": "Other",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_089",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_090",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_091",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_092",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_093",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_094",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_095",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_096",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_097",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_098",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_099",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_100",
+      "gold_intent": "Other",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_101",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_102",
+      "gold_intent": "Other",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_103",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_104",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_105",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_106",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_107",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_108",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_109",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_110",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_111",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_112",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_113",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_114",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_115",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_116",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_117",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_118",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_119",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_120",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_121",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_122",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_123",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_124",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_125",
+      "gold_intent": "Other",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_126",
+      "gold_intent": "Account Access",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": true,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_127",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_128",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": true,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_129",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_130",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_131",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_132",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_133",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_134",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_135",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_136",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_137",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_138",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_139",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_140",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": true,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_141",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_142",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": true,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_143",
+      "gold_intent": "Other",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_144",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_145",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_146",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_147",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_148",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_149",
+      "gold_intent": "Other",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_150",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_151",
+      "gold_intent": "Other",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_152",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_153",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_154",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_155",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_156",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_157",
+      "gold_intent": "Other",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_158",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_159",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_160",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_161",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_162",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_163",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_164",
+      "gold_intent": "Other",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_165",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Service Outage",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_166",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_167",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_168",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_169",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_170",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_171",
+      "gold_intent": "Other",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_172",
+      "gold_intent": "Billing/Subscription",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": true,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_173",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_174",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_175",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_176",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_177",
+      "gold_intent": "Service Outage",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_178",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_179",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_180",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_181",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_182",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_183",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_184",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_185",
+      "gold_intent": "Other",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_186",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_187",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_188",
+      "gold_intent": "Content Availability",
+      "pred_intent": "Content Availability",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_189",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Billing/Subscription",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_190",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_191",
+      "gold_intent": "Account Access",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_192",
+      "gold_intent": "Other",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_193",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_194",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_195",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Account Access",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_196",
+      "gold_intent": "Other",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_197",
+      "gold_intent": "Playback/Technical Bug",
+      "pred_intent": "Playback/Technical Bug",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_198",
+      "gold_intent": "Feature Request/Complaint",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    },
+    {
+      "id": "golden_199",
+      "gold_intent": "Other",
+      "pred_intent": "Other",
+      "gold_escalate": false,
+      "pred_escalate": true
+    },
+    {
+      "id": "golden_200",
+      "gold_intent": "Other",
+      "pred_intent": "Feature Request/Complaint",
+      "gold_escalate": false,
+      "pred_escalate": false
+    }
+  ]
+}

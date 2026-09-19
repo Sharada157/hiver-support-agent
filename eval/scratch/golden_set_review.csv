@@ -1,0 +1,39 @@
+id,text,suggested_intent,suggested_escalate,review_reason
+golden_003,"iPhone 7, iOS 11.1 (was also happening on iOS 11), Spotify version 8.4.25.906",Other,False,Other label needs semantic review
+golden_005,"Hi, I'm trying to listen to Avicii on Spotify, but only three of his songs will play, the others are not working",Other,False,Other label needs semantic review
+golden_015,I've been paying $14.99 per month several months for what?? I can't access premium or downloads. I demand full refund since subscription commenced.,Billing/Subscription,True,Multiple issue signals in message
+golden_017,hi ya question why does my music skip if it's downloaded or streaming #veryanoying,Playback/Technical Bug,False,Multiple issue signals in message
+golden_022,is your website down trying to get in to cancel my subscription but can’t get to the page,Service Outage,True,Escalation outside account/billing categories
+golden_024,"Im having trouble login in. Cant change my password and it wants to logme in through Facebook, and nothing is working",Account Access,False,Multiple issue signals in message
+golden_029,"The first one is using my password, and the other is using facebook. I'm currently using a browser to login to my account.",Account Access,False,Multiple issue signals in message
+golden_033,Oh your link shows the same deal I can’t get. #imnotcrying,Other,False,Other label needs semantic review
+golden_042,I’ve got a ton of saved offline content so I’m not eager to do that unless it’s really likely to fix things...,Other,False,Other label needs semantic review
+golden_043,Hello and thank you. Does this mean each monetary value gives usage for a different length of time ?,Other,False,Other label needs semantic review
+golden_048,Can I change my non student account into a student account?,Other,False,Other label needs semantic review
+golden_049,How do I take the alphabetical order off my playlist ?,Other,False,Other label needs semantic review
+golden_053,what are the chances that we can get the British band ADORABLE uploaded? They have albums from the 90s that are fantastic.,Other,False,Other label needs semantic review
+golden_066,I'm on 4g. I don't have access to wifi right now.,Other,False,Other label needs semantic review
+golden_068,Thats what happen to me also,Other,False,Other label needs semantic review
+golden_071,Dear when are y’all gonna make it possible to share my saved music,Other,False,Other label needs semantic review
+golden_074,this is bullshit tho. Why isnt it available if youre gonna pay via load?? Ain't logical.,Other,False,Other label needs semantic review
+golden_077,I have an iPhone 7 with iOS 11.1.2,Other,False,Other label needs semantic review
+golden_079,What happened to #housewerk?! Bring back cross-fades!,Other,False,Other label needs semantic review
+golden_088,macOS 10.13.1 update seems to have solved the issue. Thanks again!,Other,False,Other label needs semantic review
+golden_094,literally have more problems with your app than any other app on my phone. At least once a week the whole thing crashes and I either need to close down the app or completely delete it and re-download it,Service Outage,False,Multiple issue signals in message
+golden_100,Besides of solving payment issues you could take a look on your SignUp. Infinite loading spinner when all data is written - and nothing!,Other,False,Other label needs semantic review
+golden_102,"Yeah, pretty much.",Other,False,Other label needs semantic review
+golden_125,What is Dm?,Other,False,Other label needs semantic review
+golden_128,I cxld my premium subscription months ago as I deactivated my Facebook but I am still being charged. Requesting refund,Billing/Subscription,True,Multiple issue signals in message
+golden_143,I don't want to cancel. I just dont like having auto renew on,Other,False,Other label needs semantic review
+golden_148,they’re still there but all my downloads were deleted and the albums saved have half the songs missing now,Content Availability,False,Multiple issue signals in message
+golden_149,What about military members? We make basically no money.,Other,False,Other label needs semantic review
+golden_151,Having tech issues with Spotify. can you help? I’m looking at a playlist I’ve downloaded and the tracks are sort of overlapping making it difficult to read / find what I’m looking for. #help,Other,False,Other label needs semantic review
+golden_152,No it's a downloaded playlist. It stops playing half way through the song. You can't skip forward or back then the app crashes,Playback/Technical Bug,False,Multiple issue signals in message
+golden_164,Put Echame La Culpa on Today's Top Hits playlist.,Other,False,Other label needs semantic review
+golden_170,"they were missing altogether, but are now all un-downloaded which happens often and is a bit shit for a paying customer 👎",Content Availability,False,Multiple issue signals in message
+golden_171,"Google Pixel phone, Oreo OS, and I've just reinstalled Spotify so I'll try it again now to see if that fixed it!",Other,False,Other label needs semantic review
+golden_185,I've shared music many times daily with a very special someone for almost a year. Very sad that can't happen now.,Other,False,Other label needs semantic review
+golden_192,also sometimes only plays one song and then stops and pauses in between the song. Ive tried updated it twice and still wont work.,Other,False,Other label needs semantic review
+golden_196,STOP SENDING ME ADS ABOUT PREGNANCY. MY FRIENDS ARE NOW SAYING IM PREGNANT WITH MURODC'S CHILD,Other,False,Other label needs semantic review
+golden_199,please check for me and get it back,Other,False,Other label needs semantic review
+golden_200,"when are we thinking we’ll see iPhone X support, fam?",Other,False,Other label needs semantic review

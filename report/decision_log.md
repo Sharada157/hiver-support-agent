@@ -64,6 +64,28 @@ Drafted 7 categories (6 real + Other) based on prior knowledge of SpotifyCares s
   6. Service Outage
   7. Other
 
+## Phase 7 - Agent Pipeline Design Decisions
+
+- Intent classification uses few-shot LLM prompting with one representative
+  validated example per taxonomy category. The model returns a category and a
+  self-reported confidence from 0.0 to 1.0; the value is a practical proxy,
+  not calibrated token-level probability.
+- If classification fails after the existing retry policy, the agent defaults
+  to `Other`, marks `intent_used_fallback`, and escalates. This prevents an
+  unknown request from being silently auto-handled.
+- The hallucination guardrail flags dollar amounts, dates, and long numeric
+  identifiers in generated replies when they are absent from the customer
+  message, thread context, and retrieved examples. It logs the flag but does
+  not regenerate the reply; this keeps the behavior observable and avoids
+  claiming that a single regeneration guarantees groundedness.
+- Escalation combines existing intent/keyword rules with confidence below
+  `0.90` and repeat contact at four or more turns. The threshold was selected
+  from the 200-example calibration run: accuracy was 39.1% in the 0.7-0.8
+  bin, 51.0% in the 0.8-0.9 bin, and 83.1% in the 0.9-1.0 bin.
+- The full 200-example run completed with 67.5% intent accuracy, zero
+  classification fallbacks, and one hallucination flag. Full structured logs,
+  including retrieved examples, are stored under `outputs/runs/`.
+
 
 
 # Draft Escalation Rules
@@ -130,3 +152,16 @@ misleading about my headline number" section.
 Ran without an HF_TOKEN set, triggering a warning about unauthenticated request 
 limits. Did not block the run, but worth setting an HF_TOKEN env variable if 
 this step needs to be re-run frequently to avoid potential rate limiting.
+
+## Phase 6 - Baseline Implementation Notes
+
+- Trivial baseline: always predicts the most frequent training-set intent
+  (Playback/Technical Bug), uses a fixed generic reply, and never escalates.
+- Simple baseline: word-boundary regex keyword rules for intent and TF-IDF
+  cosine similarity for nearest-neighbor reply retrieval from the knowledge
+  base; escalates only on explicit refund or dollar-amount keywords.
+- Process note: baselines were initially built alongside early full-agent work
+  rather than strictly before it, and simple retrieval was upgraded from a
+  crude word-overlap heuristic to TF-IDF partway through development. Baseline
+  logic was not tuned against full-agent results, but chronology deviated from
+  the ideal baselines-first order.

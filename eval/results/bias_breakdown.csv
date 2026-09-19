@@ -1,0 +1,13 @@
+slice_type,slice,n,intent_accuracy,avg_judge_score
+intent,Account Access,28,0.9285714285714286,4.960714285714286
+intent,Billing/Subscription,30,0.8,4.923333333333333
+intent,Content Availability,32,0.4375,4.86875
+intent,Feature Request/Complaint,32,0.90625,4.8125
+intent,Other,29,0.3103448275862069,4.662068965517242
+intent,Playback/Technical Bug,33,0.6060606060606061,4.778787878787878
+intent,Service Outage,16,0.8125,4.8375
+length,short,101,0.6732673267326733,4.79009900990099
+length,medium,96,0.6875,4.873958333333333
+length,long,3,0.3333333333333333,5.0
+emoji,false,184,0.657608695652174,4.835326086956522
+emoji,true,16,0.875,4.8125

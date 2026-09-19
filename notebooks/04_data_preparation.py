@@ -35,8 +35,6 @@ full_threads_df['text_clean'] = full_threads_df['text'].apply(clean_text)
 # sanity check: compare a few before/after
 print(full_threads_df[['text', 'text_clean']].sample(5, random_state=42))
 
-import emoji
-
 def has_negative_emoji_signal(text):
     # simple example — expand this list as you find angry emojis in your data
     negative_emojis = ['😡', '🤬', '😤', '👎']
@@ -127,3 +125,4 @@ triples_df.to_csv("data/processed/spotify_triples.csv", index=False)
 full_threads_df.to_csv("data/processed/spotify_threads_clean.csv", index=False)
 
 print("Saved processed files to data/processed/")
+

@@ -1,0 +1,201 @@
+Groundedness,Relevance,Tone,Helpfulness,Overall,Justification,id,overall_numeric
+5,5,5,4,4.8,"The reply accurately acknowledges the reported bug, stays on topic, uses a friendly tone, and requests useful information to aid resolution.",golden_001,4.8
+5,5,5,5,5.0,"The reply accurately reflects the album’s unavailable status, directly answers the query, uses a friendly tone, and provides a useful alternative link.",golden_002,5.0
+5,5,5,5,5.0,"The reply mirrors the reference, stays factual, directly addresses the problem, uses a friendly tone, and offers actionable steps.",golden_003,5.0
+3,5,5,5,4.5,"The reply is friendly and directly answers the skip‑tracking question, but it adds unverified details about algorithm behavior not present in the reference.",golden_004,4.5
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the problem, uses a friendly tone, and asks for necessary details to troubleshoot.",golden_005,5.0
+4,5,5,5,4.8,"The reply is friendly and useful, but it adds “regional restrictions” which isn’t mentioned in the original reference, slightly reducing its grounding.",golden_006,4.8
+4,5,5,5,4.8,"The reply stays on topic and offers useful steps, but adds specific navigation details (Spotify Settings → Apps & Devices) that weren’t mentioned in the original messages.",golden_007,4.8
+5,5,5,5,5.0,"The reply stays factual, directly addresses the crash issue, uses a friendly tone, and offers practical troubleshooting steps.",golden_008,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the login issue, uses a friendly professional tone, and requests needed information to resolve the problem.",golden_009,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the issue, uses a warm professional tone, and requests the necessary information to resolve the problem.",golden_010,5.0
+5,4,5,4,4.5,"The reply stays true to the customer's feedback, acknowledges it politely, and promises to forward it, though it offers no concrete resolution.",golden_011,4.5
+4,5,5,4,4.5,"The reply correctly addresses the request, stays mostly factual, uses a friendly tone, and offers a useful alternative despite adding a minor unsupported link.",golden_012,4.5
+5,5,5,5,5.0,"The reply stays factual, directly addresses the download and shuffle issues, uses a friendly professional tone, and requests needed details to resolve the problem.",golden_013,5.0
+5,5,5,5,5.0,"The reply accurately answers the cancellation question, stays within known information, uses a friendly tone, and gives clear steps to help the user.",golden_014,5.0
+5,5,5,4,4.8,"The reply stays factual, directly addresses the access issue, uses a friendly tone, and asks for needed details to resolve the problem, though it doesn’t explicitly confirm a refund.",golden_015,4.8
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the tracklist issue, uses a friendly professional tone, and requests the necessary information to resolve the problem.",golden_016,5.0
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the skipping issue with appropriate troubleshooting, uses a warm tone, and offers clear steps plus a request for details to further assist.",golden_017,5.0
+5,5,5,5,5.0,"The reply accurately reflects the customer's comments, stays on topic, uses a warm tone, and appropriately acknowledges their decision without adding any unfounded information.",golden_018,5.0
+5,5,5,5,5.0,"The reply stays true to the customer's situation, offers a relevant reinstall solution, uses a friendly professional tone, and provides actionable steps likely to resolve the problem.",golden_019,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the freeze issue with appropriate troubleshooting steps, uses a friendly tone, and offers useful guidance.",golden_020,5.0
+4,5,5,4,4.5,"The reply stays on topic, sounds friendly and professional, and offers reasonable assistance without fabricating details.",golden_021,4.5
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the issue, uses a friendly professional tone, and asks for needed information to resolve the problem.",golden_022,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the issue, uses a friendly professional tone, and requests the needed information to enable further assistance.",golden_023,5.0
+5,5,5,4,4.8,"The reply stays true to the situation, directly addresses the login problem, uses a friendly tone, and requests needed details to enable further assistance.",golden_024,4.8
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the missing‑word problem, uses a friendly professional tone, and requests the needed link to resolve the issue.",golden_025,5.0
+5,5,5,5,5.0,"The reply mirrors the reference, stays fully grounded, directly addresses the problem, uses a friendly tone, and asks for needed info to help resolve the issue.",golden_026,5.0
+5,5,5,5,5.0,"The reply is fully grounded, directly addresses the issue, uses a warm professional tone, and offers a concrete next step.",golden_027,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the refund concern by requesting account details, uses a friendly tone, and sets up the next step to resolve the issue.",golden_028,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the login issue, uses a friendly tone, and requests needed info to resolve the problem.",golden_029,5.0
+2,4,5,3,3.5,"The reply adds unrelated details (e.g., “@115888”) and extra suggestions not mentioned by the user, but it maintains a friendly tone and asks for needed device info, which is somewhat useful.",golden_030,3.5
+5,5,5,5,5.0,"The reply is fully grounded, directly addresses the concern, uses a friendly tone, and offers a clear action to help resolve the issue.",golden_031,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the login problem, uses a friendly professional tone, and requests needed information to resolve the issue.",golden_032,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the issue, uses a friendly professional tone, and requests needed info to resolve the problem.",golden_033,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the missing icon issue, uses a friendly tone, and offers practical steps to resolve it.",golden_034,5.0
+5,5,5,4,4.8,"The reply stays factual, directly addresses the request about “Reputation,” sounds friendly and professional, and offers realistic next steps, though it cannot provide a concrete timeline.",golden_035,4.8
+5,5,5,4,4.8,"The reply stays factual, directly addresses the missing track and timing question, uses a friendly tone, and offers the best possible guidance given the lack of new information.",golden_036,4.8
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the payment issue, uses a warm, professional tone, and requests necessary information to resolve the problem.",golden_037,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the missing tracks, uses a warm professional tone, and offers useful next steps.",golden_038,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly tackles the login problem, uses a friendly, professional tone, and requests necessary account details to enable a solution without reactivating Facebook.",golden_039,5.0
+5,5,5,4,4.8,"The reply stays factual, directly addresses the swipe‑down issue, uses a friendly tone, and requests useful details to enable further troubleshooting.",golden_040,4.8
+5,5,5,5,5.0,"The reply stays on topic, offers appropriate troubleshooting steps, and does so in a friendly, professional manner.",golden_041,5.0
+2,4,5,3,3.5,"The reply assumes a reinstall is needed without evidence, but it politely addresses the user's concern and offers next steps.",golden_042,3.5
+5,5,5,5,5.0,The reply accurately and warmly confirms the customer's understanding without adding any unsupported information.,golden_043,5.0
+5,5,5,5,5.0,"The reply accurately follows the customer's request, stays factual, is friendly and professional, and gives clear steps plus a follow‑up action.",golden_044,5.0
+5,5,5,5,5.0,"The reply accurately acknowledges the feature request, promises to forward it, and offers a constructive next step without adding unfounded information.",golden_045,5.0
+5,5,5,5,5.0,"The reply stays within the information given, directly addresses the sync issue, uses a friendly professional tone, and offers a practical step that could resolve the problem.",golden_046,5.0
+5,5,5,5,5.0,"The reply stays true to the reference, directly addresses the password request, uses a friendly tone, and promises the needed steps via DM.",golden_047,5.0
+5,5,5,5,5.0,"The reply accurately reflects the known process, directly answers the request, uses a friendly tone, and gives a clear next step.",golden_048,5.0
+4,5,5,5,4.8,"The reply gives clear, relevant steps to disable alphabetical sorting in a friendly, professional tone, though it assumes specific UI details not confirmed in the query.",golden_049,4.8
+2,4,5,4,3.8,"The reply makes an unverified claim about the site’s status, but otherwise asks relevant diagnostic questions in a friendly, helpful manner.",golden_050,3.8
+5,5,5,5,5.0,"The reply stays factual, directly tackles the removal issue, sounds friendly and professional, and gives clear next steps plus an offer for further assistance.",golden_051,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the login problem, uses a friendly tone, and requests needed details to resolve the issue.",golden_052,5.0
+5,5,5,4,4.8,"The reply stays true to the customer's request, is warm and professional, and offers a useful link without adding unfounded details.",golden_053,4.8
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the unexpected charge, uses a friendly, professional tone, and requests necessary information to resolve the issue.",golden_054,5.0
+5,5,5,5,5.0,"The reply stays fully grounded in the customer's issue, directly addresses it, uses a warm professional tone, and requests essential information to enable effective troubleshooting.",golden_055,5.0
+5,5,5,4,4.8,"The reply stays true to the reference, directly addresses the shuffle concern in a friendly tone, and offers a way to provide feedback, though it lacks concrete troubleshooting steps.",golden_056,4.8
+5,5,5,5,5.0,"The reply mirrors the reference, stays grounded, directly addresses the problem, uses a courteous tone, and offers a practical troubleshooting step.",golden_057,5.0
+4,5,5,5,4.8,"The reply stays mostly factual while asking useful follow‑up questions, though it introduces an extra query about a Spotify account that wasn’t mentioned.",golden_058,4.8
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the request to forward the suggestion, uses a warm professional tone, and clearly offers to pass the idea to the product team, making it genuinely helpful.",golden_059,5.0
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the login problem with appropriate steps, uses a friendly tone, and offers useful troubleshooting.",golden_060,5.0
+5,5,5,4,4.8,"The reply stays true to the reference, politely redirects the user to a DM for further assistance, and directly addresses the eligibility concern.",golden_061,4.8
+5,5,5,4,4.8,"The reply stays factual, directly addresses the missing preview feature, uses a friendly professional tone, and offers to forward feedback, though it provides limited actionable information.",golden_062,4.8
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the problem, uses a friendly tone, and asks for necessary details to resolve the issue.",golden_063,5.0
+5,5,5,5,5.0,"The reply accurately acknowledges the customer's update, stays on topic, uses a friendly tone, and offers further assistance.",golden_064,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the request with useful alternatives, and does so in a friendly, professional tone.",golden_065,5.0
+5,2,5,2,3.5,The reply is polite and fact‑free but does not address the customer's lack of Wi‑Fi or offer a solution.,golden_066,3.5
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the billing issue by requesting necessary account details, uses a friendly professional tone, and provides a clear next step to resolve the problem.",golden_067,5.0
+2,2,5,2,2.8,"The reply is friendly but assumes a DM exists and does not address the vague customer comment, offering little useful assistance.",golden_068,2.8
+5,5,5,5,5.0,"The reply stays factual, directly asks for the needed URI, uses a friendly tone, and clearly advances troubleshooting.",golden_069,5.0
+4,5,5,5,4.8,"The reply is friendly and directly asks for needed details, but it incorrectly assumes the service is Spotify, adding an unfounded detail.",golden_070,4.8
+5,5,5,4,4.8,"The reply stays factual, directly addresses the request, uses a friendly tone, and provides a useful next step by noting the suggestion will be passed to the product team.",golden_071,4.8
+3,5,5,5,4.5,"The reply is friendly and relevant but incorrectly assumes the app is Spotify, reducing its grounding.",golden_072,4.5
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the login problem, uses a friendly professional tone, and offers a practical step that could resolve the issue.",golden_073,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the load‑payment concern, uses a friendly tone, and requests needed details to resolve the issue.",golden_074,5.0
+4,5,5,5,4.8,"The reply stays on topic and offers useful steps, though it adds some details not present in the reference.",golden_075,4.8
+5,5,5,5,5.0,"The reply stays true to the known licensing explanation, directly answers the question, sounds friendly and professional, and gives useful reassurance.",golden_076,5.0
+2,3,5,3,3.3,"The reply adds an unfounded Spotify step, which isn’t mentioned by the customer, lowering its grounding and overall usefulness despite a friendly tone.",golden_077,3.3
+5,5,5,5,5.0,"The reply stays true to the information available, directly addresses the request, sounds friendly and professional, and provides a helpful link for further information.",golden_078,5.0
+3,5,5,5,4.5,"The reply is friendly and provides useful cross‑fade instructions, but it assumes the #housewerk playlist’s status without evidence.",golden_079,4.5
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the signup error by requesting needed details, uses a friendly tone, and facilitates further troubleshooting.",golden_080,5.0
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the offline issue with appropriate troubleshooting steps, uses a friendly tone, and offers clear actions to help resolve the problem.",golden_081,5.0
+5,5,5,5,5.0,"The reply faithfully mirrors the reference, asking only for necessary details without adding any unfounded information.",golden_082,5.0
+5,5,5,4,4.8,"The reply stays factual, directly addresses the price wish with a friendly tone, and offers a useful suggestion to watch for future deals.",golden_083,4.8
+5,5,5,5,5.0,"The reply stays factual, directly addresses the login issue, uses a friendly professional tone, and offers useful troubleshooting steps while requesting needed details.",golden_084,5.0
+4,5,5,5,4.8,"The reply gives clear, relevant steps to stop auto‑renew and offers further assistance, with only minor assumptions beyond the provided information.",golden_085,4.8
+5,5,5,5,5.0,"The reply stays true to the information needed, directly addresses the login issue, uses a friendly professional tone, and provides a clear next step for recovery.",golden_086,5.0
+5,5,5,4,4.8,"The reply accurately acknowledges the feature request, stays on topic, uses a friendly tone, and offers a useful next step without adding any unfounded details.",golden_087,4.8
+5,5,5,5,5.0,"The reply is fully grounded, directly acknowledges the resolved issue, uses a warm, professional tone, and offers helpful next‑step support.",golden_088,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly asks pertinent diagnostic details, uses a friendly professional tone, and provides useful next steps for troubleshooting.",golden_089,5.0
+5,5,5,4,4.8,"The reply stays factual, directly addresses the Paysafecard and premium activation issue, uses a friendly tone, and promises action, though it lacks detailed next steps.",golden_090,4.8
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the query, uses a friendly tone, and offers useful reassurance.",golden_091,5.0
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the bug concern, uses a friendly tone, and offers actionable next steps.",golden_092,5.0
+4,5,5,5,4.8,"The reply gives clear, appropriate password‑reset instructions and a friendly tone, though the exact navigation steps are assumed rather than confirmed.",golden_093,4.8
+5,5,5,5,5.0,"The reply stays factual, directly tackles the crash issue with appropriate troubleshooting, sounds friendly and professional, and offers concrete steps to help resolve the problem.",golden_094,5.0
+5,3,5,3,4.0,"The reply accurately acknowledges the DM without adding false details, is friendly, but only minimally addresses the specific card issues.",golden_095,4.0
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the removal, uses a friendly tone, and asks for needed info to resolve.",golden_096,5.0
+5,4,5,4,4.5,"The reply accurately reflects the service’s limitations, stays on topic, uses a friendly tone, and offers a useful reference link.",golden_097,4.5
+5,5,5,5,5.0,"The reply stays factual, directly addresses the streaming issue, uses a warm professional tone, and asks useful diagnostic details.",golden_098,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the storage issue by requesting essential device details, uses a courteous tone, and gathers information needed to provide a solution.",golden_099,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the spinner issue, uses a friendly professional tone, and requests needed details to investigate.",golden_100,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the crash issue, uses a friendly tone, and requests necessary details to enable effective troubleshooting.",golden_101,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the shuffle question with a helpful link, and uses a friendly, professional tone.",golden_102,5.0
+3,5,5,4,4.3,"The reply is friendly and on‑topic but incorrectly assumes the account is a Spotify one, adding an unfounded detail.",golden_103,4.3
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the charge complaint, uses a friendly tone, and asks for necessary info to resolve the issue.",golden_104,5.0
+5,5,5,4,4.8,"The reply stays factual, directly addresses the missing TWICE songs in Malaysia, uses a warm professional tone, and offers a concrete next step, making it largely helpful.",golden_105,4.8
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the problem, uses a friendly tone, and asks for needed info to resolve the issue.",golden_106,5.0
+5,5,5,4,4.8,"The reply stays factual, directly addresses the reported outage, uses a friendly tone, and offers to follow up, though it provides limited concrete assistance.",golden_107,4.8
+5,5,5,5,5.0,"The reply accurately reflects the current lack of a throwback feature, stays on topic, uses a friendly tone, and offers to forward the suggestion to the team.",golden_108,5.0
+5,4,5,4,4.5,"The reply stays factual, politely asks for needed details to troubleshoot, and is a useful next step toward solving the offline login issue.",golden_109,4.5
+5,5,5,5,5.0,"The reply stays factual, directly addresses the login/playlist issue, uses a friendly tone, and requests needed info to resolve the problem.",golden_110,5.0
+3,5,5,4,4.3,"The reply is polite and on‑topic but incorrectly assumes the service is Spotify, adding an unfounded detail.",golden_111,4.3
+5,5,5,5,5.0,"The reply stays factual, directly tackles the undownloading issue with actionable steps, uses a friendly professional tone, and offers clear next actions.",golden_112,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the lack of parental controls, uses a friendly tone, and offers a concrete next step.",golden_113,5.0
+5,5,5,4,4.8,"The reply stays factual, directly addresses the concern, uses a friendly tone, and offers to forward feedback while requesting additional details if needed.",golden_114,4.8
+4,5,5,5,4.8,"The reply stays factual, directly addresses the feature request by directing the user to a feedback channel, and does so in a friendly, helpful manner.",golden_115,4.8
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the iPad app complaint, uses a warm, professional tone, and requests useful details to enable further assistance.",golden_116,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the password‑reset problem, uses a friendly professional tone, and requests the needed information to resolve the issue.",golden_117,5.0
+2,4,5,4,3.8,"The reply invents a Spotify context not mentioned by the customer, lowering grounding, but otherwise stays friendly, relevant, and offers a useful reinstall step.",golden_118,3.8
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the login issue, uses a friendly professional tone, and asks for needed information to resolve the problem.",golden_119,5.0
+5,5,5,5,5.0,"The reply stays true to the customer's query, asks for necessary account details to check eligibility, and does so in a friendly, professional manner.",golden_120,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the unavailability, uses a friendly tone, and offers actionable next steps.",golden_121,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the login and payment problems, uses a warm professional tone, and requests needed information to resolve the issue.",golden_122,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the problem, uses a friendly tone, and requests useful information to troubleshoot.",golden_123,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the request, uses a friendly tone, and clearly informs the user of the current unavailability and future updates.",golden_124,5.0
+5,5,5,5,5.0,"The reply accurately defines DM, stays on topic, uses a friendly tone, and offers useful guidance.",golden_125,5.0
+5,5,5,5,5.0,"The reply stays true to the information provided, directly addresses the cancellation request, uses a friendly professional tone, and asks for necessary details to enable assistance.",golden_126,5.0
+5,5,5,4,4.8,"The reply accurately reflects the current limitations, directly addresses the request, uses a friendly tone, and offers the best possible assistance by forwarding feedback.",golden_127,4.8
+5,5,5,5,5.0,"The reply stays true to the customer's issue, asks for needed account details, maintains a friendly professional tone, and directly facilitates resolving the refund.",golden_128,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the deletion request, uses a friendly professional tone, and asks for needed details to resolve the issue.",golden_129,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the request, uses a friendly tone, and asks for needed details to resolve the issue.",golden_130,5.0
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the syncing issue, uses a friendly professional tone, and requests necessary account details to enable resolution.",golden_131,5.0
+5,5,4,5,4.8,"The reply stays factual, directly addresses the charge issue by requesting needed account details, uses a friendly tone, and provides a clear next step to resolve the problem.",golden_132,4.8
+2,3,5,3,3.3,"The reply is friendly and partly addresses the issue, but it invents unrelated details (e.g., mentioning Spotify) and thus is not fully grounded or helpful.",golden_133,3.3
+5,5,5,5,5.0,"The reply stays true to the information given, directly addresses the outage, sounds friendly and professional, and provides a clear, useful next step.",golden_134,5.0
+5,4,5,3,4.3,"The reply stays factual and friendly, addresses the request by noting the content isn’t available and points to a reference, but offers limited actionable help.",golden_135,4.3
+5,5,5,5,5.0,"The reply accurately answers the subscription term question, stays factual, sounds friendly, and offers useful next steps.",golden_136,5.0
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the login loop, uses a warm tone, and offers useful troubleshooting steps.",golden_137,5.0
+5,5,5,5,5.0,"The reply is fully grounded, directly addresses the problem, uses a warm tone, and asks for necessary details to resolve the issue.",golden_138,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the issue, uses a friendly professional tone, and requests necessary information to resolve the problem.",golden_139,5.0
+4,5,5,5,4.8,"The reply stays mostly factual, directly addresses the request, uses a warm tone, and offers clear steps to set up the family plan.",golden_140,4.8
+5,5,5,5,5.0,"The reply stays factual, directly addresses the crash issue, uses a friendly professional tone, and requests essential information to enable effective troubleshooting.",golden_141,5.0
+5,5,5,4,4.8,"The reply stays factual, directly addresses the refund delay, uses a courteous tone, and offers a clear next step, though it adds limited new assistance.",golden_142,4.8
+5,5,5,4,4.8,"The reply stays true to known policy, directly addresses the auto‑renew concern, uses a warm tone, and offers practical next steps, though it cannot fully satisfy the request not to cancel.",golden_143,4.8
+5,5,5,5,5.0,"The reply accurately reflects the customer's request, stays factual, is warm and professional, and confirms the request will be forwarded to the appropriate team.",golden_144,5.0
+5,5,5,5,5.0,"The reply accurately acknowledges the issue, stays factual, and offers a courteous, helpful next step.",golden_145,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the complaint, uses a friendly professional tone, and requests necessary details to enable a solution.",golden_146,5.0
+5,5,5,5,5.0,"The reply stays true to the known solution, directly addresses the problem, uses a friendly professional tone, and gives a clear actionable step with a helpful link.",golden_147,5.0
+5,5,5,5,5.0,"The reply stays fully grounded, directly addresses the problem, uses a friendly professional tone, and requests needed information to investigate and resolve the issue.",golden_148,5.0
+5,5,5,5,5.0,"The reply accurately reflects the known policy, directly answers the customer's question, uses a warm professional tone, and provides the most helpful response possible.",golden_149,5.0
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the request, uses a warm tone, and offers the best possible assistance.",golden_150,5.0
+5,5,5,5,5.0,"The reply stays true to the customer's problem, offers appropriate troubleshooting steps, and does so in a friendly, professional manner.",golden_151,5.0
+5,4,5,4,4.5,"The reply stays factual, asks a relevant troubleshooting question in a friendly tone, and provides a useful next step toward resolving the issue.",golden_152,4.5
+5,5,5,5,5.0,"The reply stays true to the customer's input, directly addresses the suggestion, sounds friendly and professional, and provides a practical alternative while promising to forward the idea.",golden_153,5.0
+5,5,5,5,5.0,"The reply mirrors the reference, stays factual, directly answers the question, and does so in a friendly, helpful manner.",golden_154,5.0
+5,5,5,5,5.0,"The reply correctly asks for the needed account details in a friendly, professional manner, directly addressing the sign‑in problem.",golden_155,5.0
+5,5,5,5,5.0,"The reply stays true to the provided information, directly addresses the feature request, uses a friendly tone, and offers a clear action for the customer to support the idea.",golden_156,5.0
+5,5,5,5,5.0,"The reply stays true to the customer's concern, asks for needed info, and does so in a friendly, professional manner.",golden_157,5.0
+5,5,5,4,4.8,"The reply accurately reflects the limitation, stays on topic, uses a friendly tone, and offers a constructive next step, though it cannot provide a direct solution.",golden_158,4.8
+5,5,5,5,5.0,"The reply stays true to the customer's issue, suggests the appropriate reinstall solution, uses a warm professional tone, and offers clear next steps.",golden_159,5.0
+5,4,5,4,4.5,"The reply accurately references the DM request, stays on topic, uses a friendly tone, and guides the user toward resolving the Spotify issue.",golden_160,4.5
+5,5,5,5,5.0,"The reply stays fully based on the customer's issue, asks for necessary details, uses a friendly professional tone, and provides clear steps to troubleshoot the invitation problem.",golden_161,5.0
+5,5,5,4,4.8,"The reply accurately mirrors the customer's intent, stays on topic, uses a friendly tone, and appropriately acknowledges the pending follow‑up.",golden_162,4.8
+5,5,5,5,5.0,"The reply stays factual, directly addresses the request, uses a friendly professional tone, and gives clear next steps to resolve the issue.",golden_163,5.0
+5,5,5,5,5.0,"The reply accurately acknowledges the request, stays on topic, uses a friendly tone, and clearly states the next step without adding unfounded details.",golden_164,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the connectivity problem, uses a friendly professional tone, and requests necessary details to enable effective troubleshooting.",golden_165,5.0
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the problem, uses a warm tone, and asks for needed info to resolve the issue.",golden_166,5.0
+3,5,5,4,4.3,"The reply is friendly and relevant, offering useful next steps, but it adds an unstated detail about the “Spotify Community page,” which isn’t confirmed by the original message.",golden_167,4.3
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the problem, uses a warm tone, and offers practical steps.",golden_168,5.0
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the ad issue, uses a friendly tone, and requests needed info to resolve the problem.",golden_169,5.0
+5,5,5,5,5.0,"The reply stays true to the reference, directly addresses the missing downloads, uses a friendly tone, and offers clear next steps and further assistance.",golden_170,5.0
+5,5,5,4,4.8,"The reply stays grounded, directly addresses the reinstall, uses a friendly tone, and prompts the customer for a status update, making it helpful.",golden_171,4.8
+5,5,5,5,5.0,"The reply accurately reflects the known information, directly answers the veteran‑deal query, uses a friendly tone, and offers a useful alternative option.",golden_172,5.0
+5,4,5,4,4.5,"The reply stays factual, asks for needed details to investigate, sounds friendly, and provides a useful next step toward solving the problem.",golden_173,4.5
+5,5,5,5,5.0,"The reply mirrors the reference, stays on topic, uses a friendly tone, and requests needed information to investigate the CSRF issue.",golden_174,5.0
+4,5,5,4,4.5,"The reply stays mostly factual and empathetic, directly addresses the missing‑track complaint, and offers a useful next step, though it adds generic explanations not explicitly given.",golden_175,4.5
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the problem, uses a warm tone, and asks for needed details to troubleshoot.",golden_176,5.0
+5,5,5,5,5.0,"The reply stays true to the information given, directly addresses the hacked‑account problem, uses a friendly professional tone, and provides a clear next step to resolve the issue.",golden_177,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the problem, uses a friendly tone, and requests essential information to enable troubleshooting.",golden_178,5.0
+5,5,5,5,5.0,"The reply stays true to the customer's request, offers the appropriate voting link, uses a friendly tone, and provides a clear, useful action.",golden_179,5.0
+5,5,5,4,4.8,"The reply stays fully grounded, directly addresses the feature‑availability concern, uses a friendly professional tone, and while it only escalates the feedback, it still meaningfully advances the issue.",golden_180,4.8
+5,5,5,5,5.0,"The reply is fully grounded, directly addresses the request, uses a friendly tone, and offers a useful next step.",golden_181,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the uninstall/DLL error, uses a friendly professional tone, and offers concrete steps that are likely to resolve the problem.",golden_182,5.0
+5,5,5,4,4.8,"The reply stays fully factual, directly addresses the missing feature concern, uses a warm professional tone, and offers the best possible assistance given the lack of current information.",golden_183,4.8
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the concern, uses a friendly tone, and offers useful diagnostic steps.",golden_184,5.0
+5,5,5,5,5.0,"The reply stays factual, directly addresses the sharing issue with empathy, uses a warm professional tone, and requests necessary details to enable effective troubleshooting.",golden_185,5.0
+4,5,5,4,4.5,"The reply stays factual, directly addresses the persistent issue with a friendly tone, and offers practical next steps that could resolve the problem.",golden_186,4.5
+5,5,5,5,5.0,"The reply stays true to the customer's issue, asks for necessary account details without adding false information, uses a friendly tone, and provides a clear next step to resolve the login problem.",golden_187,5.0
+5,5,5,5,5.0,"The reply stays grounded, directly addresses the removal issue, uses a friendly tone, and asks for needed info to resolve.",golden_188,5.0
+5,5,5,5,5.0,"The reply accurately confirms the promotion is for new subscribers, directly answers the error, and offers a clear next step in a friendly tone.",golden_189,5.0
+5,5,5,4,4.8,"The reply stays factual, directly addresses the music‑finding problem, uses a friendly tone, and seeks needed details to enable a solution.",golden_190,4.8
+5,5,5,5,5.0,"The reply faithfully mirrors the reference, stays on topic, uses a friendly professional tone, and requests the necessary information to investigate and resolve the password reset issue.",golden_191,5.0
+5,4,5,4,4.5,"The reply stays factual, asks pertinent diagnostic questions, uses a warm tone, and gathers needed info to move toward a solution.",golden_192,4.5
+4,3,5,2,3.5,The reply is friendly and generally on-topic but offers no concrete assistance or verification of the specific search error.,golden_193,3.5
+5,5,5,4,4.8,"The reply stays true to the information given, directly addresses the request with a friendly tone, and provides a clear (though generic) next step.",golden_194,4.8
+5,5,5,5,5.0,"The reply stays true to the customer's issue, asks for needed info, and does so in a friendly, professional manner.",golden_195,5.0
+5,5,5,5,5.0,"The reply apologizes, acknowledges the unwanted pregnancy ads, offers to pass the feedback on, and requests account details to investigate, staying fully grounded, relevant, warm, and useful.",golden_196,5.0
+5,5,5,5,5.0,"The reply stays factual, directly asks for needed details, uses a friendly tone, and provides a clear next step to diagnose the issue.",golden_197,5.0
+5,5,5,5,5.0,"The reply accurately reflects the customer's feedback, stays on topic, uses a warm professional tone, and promises to forward the concern to the appropriate team.",golden_198,5.0
+5,4,5,3,4.3,"The reply stays factual, politely asks for needed details, and maintains a warm tone, but it only seeks clarification rather than directly resolving the request.",golden_199,4.3
+5,5,5,4,4.8,"The reply stays true to the known information, directly addresses the request, uses a warm tone, and adds a useful tip about keeping updates on.",golden_200,4.8
