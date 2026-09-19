@@ -9,7 +9,7 @@ from sentence_transformers import SentenceTransformer
 from google import genai
 from huggingface_hub import InferenceClient
 
-load_dotenv()
+load_dotenv(override=True)
 hf_token = os.getenv("HF_TOKEN", "").strip()
 if hf_token:
     os.environ["HF_TOKEN"] = hf_token
