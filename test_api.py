@@ -9,10 +9,10 @@ dotenv.load_dotenv()
 client = genai.Client()
 
 # Generate content
-response = client.models.generate_content(
-    model="gemini-2.5-flash",
-    contents="Say hello in one sentence."
+response = client.interactions.create(
+    model="gemini-3.6-flash",
+    input="Say hello in one sentence."
 )
 
-print(response.text)
+print(response.output_text)
 
