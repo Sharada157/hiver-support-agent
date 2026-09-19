@@ -17,15 +17,21 @@ if hf_token:
     os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "0"
 
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 HF_MODEL = os.getenv("HF_MODEL", "Qwen/Qwen2.5-7B-Instruct")
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "https://ollama.com").rstrip("/")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gpt-oss:20b")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
 if LLM_PROVIDER == "hf":
     HF_TOKEN = os.getenv("HF_TOKEN")
     if not HF_TOKEN:
         raise RuntimeError("LLM_PROVIDER=hf requires HF_TOKEN to be set in the environment.")
     llm_client = InferenceClient(model=HF_MODEL, token=HF_TOKEN)
+elif LLM_PROVIDER == "groq":
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+    if not GROQ_API_KEY:
+        raise RuntimeError("LLM_PROVIDER=groq requires GROQ_API_KEY to be set in the environment.")
+    llm_client = None
 elif LLM_PROVIDER == "ollama":
     OLLAMA_API_KEY = os.getenv("OLLAMA_API_KEY")
     if not OLLAMA_API_KEY:
@@ -77,6 +83,19 @@ def call_llm_with_retry(prompt, max_retries=5):
     """Call the selected provider with bounded retries and no silent fallback."""
     for attempt in range(max_retries):
         try:
+            if LLM_PROVIDER == "groq":
+                response = httpx.post(
+                    "https://api.groq.com/openai/v1/chat/completions",
+                    headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
+                    json={
+                        "model": GROQ_MODEL,
+                        "messages": [{"role": "user", "content": prompt}],
+                        "temperature": 0,
+                    },
+                    timeout=30.0,
+                )
+                response.raise_for_status()
+                return response.json()["choices"][0]["message"]["content"].strip()
             if LLM_PROVIDER == "hf":
                 response = llm_client.chat_completion(
                     messages=[{"role": "user", "content": prompt}],
