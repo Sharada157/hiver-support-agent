@@ -221,10 +221,10 @@ def decide_escalation(
 ):
     text_lower = str(text).lower()
 
-    if intent == "Billing/Subscription" and any(kw in text_lower for kw in ["refund", "$", "charge", "charged", "statement", "bank", "card", "billing"]):
-        return True, "Billing issue mentions refund/charge — financial liability"
-    if intent == "Account Access" and any(kw in text_lower for kw in ["hacked", "unauthorized", "not me"]):
-        return True, "Possible account compromise — needs human verification"
+    if any(kw in text_lower for kw in ["refund", "$", "charge", "charged", "statement", "bank", "card", "billing"]):
+        return True, "Financial liability or billing concern detected — requires human verification"
+    if intent == "Account Access" and any(kw in text_lower for kw in ["hacked", "unauthorized", "not me", "locked out"]):
+        return True, "Possible account compromise or lockout — needs human verification"
     if any(kw in text_lower for kw in ["lawyer", "cancelling", "furious", "unacceptable"]):
         return True, "Anger/threat language detected"
     if confidence < confidence_threshold:
