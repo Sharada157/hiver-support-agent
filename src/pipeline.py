@@ -10,7 +10,11 @@ from google import genai
 from huggingface_hub import InferenceClient
 
 load_dotenv()
-os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN", "")
+hf_token = os.getenv("HF_TOKEN", "").strip()
+if hf_token:
+    os.environ["HF_TOKEN"] = hf_token
+    os.environ["HUGGINGFACE_HUB_TOKEN"] = hf_token
+    os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "0"
 
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
