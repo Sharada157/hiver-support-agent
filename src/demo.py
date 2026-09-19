@@ -8,7 +8,7 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 if __name__ == "__main__":
-    test_message = "I recently signed up for a promotional free trial of Spotify Premium, but I am now being charged the full monthly fee and cannot remember my login details to cancel it."
+    test_message = "hiii, samera, how are you? have a beuatiful day, and im  a very big fan of your work"
     test_thread_context = test_message  # no prior context for a single fresh message
 
     result = run_agent(test_message, test_thread_context)
