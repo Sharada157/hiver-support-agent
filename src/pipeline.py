@@ -218,13 +218,18 @@ def decide_escalation(
     thread_context="",
     num_turns=1,
     confidence_threshold=0.9,
+    reply="",
 ):
     text_lower = str(text).lower()
+    reply_lower = str(reply).lower()
 
-    if any(kw in text_lower for kw in ["refund", "$", "charge", "charged", "statement", "bank", "card", "billing"]):
+    if any(kw in text_lower for kw in ["refund", "$", "charge", "charged", "statement", "bank", "card", "billing", "payment"]):
         return True, "Financial liability or billing concern detected — requires human verification"
-    if intent == "Account Access" and any(kw in text_lower for kw in ["hacked", "unauthorized", "not me", "locked out"]):
+    if intent == "Account Access" and any(kw in text_lower for kw in ["hacked", "unauthorized", "not me", "locked out", "login issue", "unable to access", "access my profile"]):
         return True, "Possible account compromise or lockout — needs human verification"
+    backstage_keywords = ["backstage", "under the hood", "behind the scenes", "dm us your", "send us a dm", "dm us the email", "account's email"]
+    if any(kw in reply_lower for kw in backstage_keywords) or any(kw in text_lower for kw in backstage_keywords):
+        return True, "Private account lookup or 'backstage' inspection required — escalating to human agent"
     if any(kw in text_lower for kw in ["lawyer", "cancelling", "furious", "unacceptable"]):
         return True, "Anger/threat language detected"
     if confidence < confidence_threshold:
@@ -248,6 +253,7 @@ def run_agent(text, thread_context="", num_turns=1):
         confidence,
         thread_context,
         num_turns,
+        reply=reply,
     )
     return {
         "input_text": text,
