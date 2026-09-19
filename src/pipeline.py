@@ -239,6 +239,52 @@ def decide_escalation(
     return False, "No escalation trigger matched"
 
 
+def decide_escalation_llm(
+    text,
+    intent,
+    confidence=0.0,
+    thread_context="",
+    num_turns=1,
+    confidence_threshold=0.9,
+    reply="",
+):
+    """Semantic LLM-based escalation evaluator."""
+    prompt = f"""You are an escalation policy evaluator for SpotifyCares customer support.
+Evaluate if this customer query requires human agent escalation.
+
+Escalate to a human agent (Escalate: True) if ANY of these conditions apply:
+1. Financial or Billing Risk: Refunds, unknown charges, billing issues, bank/card disputes.
+2. Security or Account Compromise: Hacked accounts, locked out of profile, 2FA, unauthorized access.
+3. Private Account Data / 'Backstage' Inspection: Requires private DM account verification, looking up user email/credentials, or backend inspection.
+4. High Customer Frustration: Profanity, legal threats, anger, or threat to cancel.
+5. Low Confidence or Ambiguity: Ambiguous customer query or confidence < {confidence_threshold}.
+
+Customer Message: "{text}"
+Predicted Intent: "{intent}" (Confidence: {confidence:.2f})
+Drafted Reply: "{reply}"
+
+Respond in exactly this format:
+Escalate: <True or False>
+Reason: <short 1-sentence reason>"""
+
+    try:
+        raw = call_llm_with_retry(prompt)
+        escalate = False
+        reason = "LLM evaluated no escalation required"
+        for line in raw.splitlines():
+            key, separator, value = line.partition(":")
+            if not separator:
+                continue
+            if key.strip().lower() == "escalate":
+                escalate = value.strip().lower() in {"true", "yes", "1"}
+            elif key.strip().lower() == "reason":
+                reason = value.strip()
+        return escalate, reason
+    except Exception as e:
+        print(f"WARNING: LLM escalation check failed ({e}); falling back to rule-based escalation")
+        return decide_escalation(text, intent, confidence, thread_context, num_turns, confidence_threshold, reply)
+
+
 def run_agent(text, thread_context="", num_turns=1):
     start_time = time.perf_counter()
     intent, confidence, intent_fallback = classify_intent_with_confidence(text)
@@ -247,14 +293,22 @@ def run_agent(text, thread_context="", num_turns=1):
     hallucination_check = check_for_hallucinated_facts(
         reply, text, thread_context, retrieved
     )
-    escalate, reason = decide_escalation(
-        text,
-        intent,
-        confidence,
-        thread_context,
-        num_turns,
-        reply=reply,
-    )
+
+    escalation_method = os.getenv("ESCALATION_METHOD", "hybrid").lower()
+    if escalation_method == "llm":
+        escalate, reason = decide_escalation_llm(
+            text, intent, confidence, thread_context, num_turns, reply=reply
+        )
+    else:
+        escalate, reason = decide_escalation(
+            text,
+            intent,
+            confidence,
+            thread_context,
+            num_turns,
+            reply=reply,
+        )
+
     return {
         "input_text": text,
         "thread_context": thread_context,
