@@ -30,7 +30,9 @@ def get_active_provider():
     return "groq"
 
 LLM_PROVIDER = get_active_provider()
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
+if any(old in GEMINI_MODEL for old in ["2.5", "2.0", "1.5"]):
+    GEMINI_MODEL = "gemini-3.5-flash"
 HF_MODEL = os.getenv("HF_MODEL", "Qwen/Qwen2.5-7B-Instruct")
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "https://ollama.com").rstrip("/")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gpt-oss:20b")
@@ -128,14 +130,14 @@ def call_llm_with_retry(prompt, max_retries=5):
                 return response.json()["choices"][0]["message"]["content"].strip()
 
             # Default: Gemini
-            gemini_model = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+            raw_model = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
+            if any(old in raw_model for old in ["2.5", "2.0", "1.5"]):
+                gemini_model = "gemini-3.5-flash"
+            else:
+                gemini_model = raw_model
             client = genai.Client()
-            try:
-                response = client.interactions.create(model=gemini_model, input=prompt)
-                return response.output_text.strip()
-            except Exception:
-                resp = client.models.generate_content(model=gemini_model, contents=prompt)
-                return resp.text.strip()
+            response = client.interactions.create(model=gemini_model, input=prompt)
+            return response.output_text.strip()
 
         except Exception as error:
             error_text = str(error).lower()
