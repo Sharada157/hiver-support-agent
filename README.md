@@ -4,6 +4,8 @@ An intelligent, grounded AI customer support agent built for Spotify's public so
 
 The system classifies customer tweets into a 7-category intent taxonomy, drafts grounded support responses using dense vector retrieval (RAG) over ~4,000 real historical Spotify resolutions, detects ungrounded hallucinated facts, and enforces a safety-first escalation policy to human agents.
 
+![Architecture Diagram](assets/architecture_diagram.svg)
+
 ---
 
 ## 🚀 Quick Summary
@@ -38,7 +40,7 @@ Create a `.env` file in the project root:
 # Primary Fast Provider (Groq API - Free key at: https://console.groq.com/keys)
 LLM_PROVIDER=groq
 GROQ_API_KEY=your_groq_api_key_here
-GROQ_MODEL=groq/compound
+GROQ_MODEL=openai/gpt-oss-20b
 
 # Optional Backup Providers
 GEMINI_API_KEY=your_gemini_api_key_here
@@ -47,9 +49,19 @@ HF_TOKEN=your_huggingface_token_here
 
 ---
 
-## ⚡ Quick Demo (10 Seconds)
+## 🌟 Interactive Web UI Prototype
 
-Run a test query through the end-to-end agent pipeline:
+Launch the interactive dark-mode dashboard with real-time RAG visualization, tweet preview, and safety status badges:
+
+```powershell
+streamlit run app.py
+```
+
+---
+
+## ⚡ Quick CLI Demo (10 Seconds)
+
+Run a test query through the command-line pipeline:
 
 ```powershell
 python src/demo.py

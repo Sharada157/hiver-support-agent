@@ -21,7 +21,7 @@ GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 HF_MODEL = os.getenv("HF_MODEL", "Qwen/Qwen2.5-7B-Instruct")
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "https://ollama.com").rstrip("/")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gpt-oss:20b")
-GROQ_MODEL = os.getenv("GROQ_MODEL", "groq/compound")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
 if LLM_PROVIDER == "hf":
     HF_TOKEN = os.getenv("HF_TOKEN")
     if not HF_TOKEN:
@@ -119,6 +119,22 @@ def call_llm_with_retry(prompt, max_retries=5):
             return response.output_text.strip()
         except Exception as error:
             error_text = str(error).lower()
+            if LLM_PROVIDER == "groq" and isinstance(error, httpx.HTTPStatusError):
+                try:
+                    err_json = error.response.json()
+                    err_msg = err_json.get("error", {}).get("message", error.response.text)
+                except Exception:
+                    err_msg = error.response.text
+                if error.response.status_code == 404:
+                    raise RuntimeError(
+                        f"Groq API error 404: {err_msg}. "
+                        f"Check that GROQ_MODEL in .env is valid (current: '{GROQ_MODEL}')."
+                    ) from error
+                if error.response.status_code == 401:
+                    raise RuntimeError(
+                        f"Groq rejected GROQ_API_KEY (401): {err_msg}. "
+                        "Check your GROQ_API_KEY in .env."
+                    ) from error
             if LLM_PROVIDER == "hf" and ("403" in error_text or "forbidden" in error_text):
                 raise RuntimeError(
                     "Hugging Face rejected the request (403). Create a token with "
@@ -159,7 +175,7 @@ Confidence: <number from 0.0 to 1.0>"""
     try:
         raw = call_llm_with_retry(prompt)
     except Exception as error:
-        print(f"WARNING: classification failed for {str(text)[:50]}... defaulting to Other")
+        print(f"WARNING: classification failed for {str(text)[:50]}... ({error}) defaulting to Other")
         return "Other", 0.0, True
 
     category = "Other"

@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%" style="background:#121212; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="spotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1DB954" />
+      <stop offset="100%" stop-color="#14833b" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#242424" />
+      <stop offset="100%" stop-color="#181818" />
+    </linearGradient>
+    <linearGradient id="alertGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EB5757" />
+      <stop offset="100%" stop-color="#A83232" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#1DB954" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#EB5757" />
+    </marker>
+  </defs>
+
+  <!-- Title & Branding -->
+  <circle cx="65" cy="55" r="24" fill="#1DB954" />
+  <path d="M52 64 C60 69, 70 69, 78 64 M50 56 C61 62, 73 62, 80 56 M48 48 C62 55, 76 55, 82 48" stroke="#121212" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  
+  <text x="105" y="52" fill="#FFFFFF" font-size="24" font-weight="800" letter-spacing="-0.5px">@SpotifyCares AI Support Agent Architecture</text>
+  <text x="105" y="74" fill="#A7A7A7" font-size="14">Grounded Social Media Support with Dense Vector Retrieval (RAG) &amp; Safety Guardrails</text>
+
+  <!-- Pipeline Container 1: Input -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="140" width="230" height="200" rx="14" fill="url(#cardGrad)" stroke="#333333" stroke-width="1.5" />
+    <rect x="50" y="140" width="230" height="8" rx="4" fill="#1DB954" />
+    <text x="70" y="180" fill="#1DB954" font-size="12" font-weight="700" letter-spacing="1px">STAGE 1: INGESTION</text>
+    <text x="70" y="210" fill="#FFFFFF" font-size="17" font-weight="700">Inbound Tweet</text>
+    <text x="70" y="235" fill="#A7A7A7" font-size="12" line-height="1.4">
+      <tspan x="70" dy="0">• Real Twitter customer mention</tspan>
+      <tspan x="70" dy="20">• Context thread reconstruction</tspan>
+      <tspan x="70" dy="20">• Entity / URL normalization</tspan>
+      <tspan x="70" dy="20">• Multi-turn history tracking</tspan>
+    </text>
+  </g>
+
+  <!-- Connection: Ingestion to Intent & RAG -->
+  <path d="M 280 200 L 340 200" stroke="#1DB954" stroke-width="2.5" marker-end="url(#arrow)" fill="none" />
+  <path d="M 280 280 L 310 280 L 310 440 L 340 440" stroke="#1DB954" stroke-width="2.5" marker-end="url(#arrow)" fill="none" />
+
+  <!-- Pipeline Container 2: Intent Classification -->
+  <g filter="url(#shadow)">
+    <rect x="350" y="140" width="240" height="150" rx="14" fill="url(#cardGrad)" stroke="#333333" stroke-width="1.5" />
+    <text x="370" y="175" fill="#1DB954" font-size="12" font-weight="700" letter-spacing="1px">STAGE 2: CLASSIFICATION</text>
+    <text x="370" y="202" fill="#FFFFFF" font-size="17" font-weight="700">7-Category Taxonomy</text>
+    <text x="370" y="226" fill="#A7A7A7" font-size="12">
+      <tspan x="370" dy="0">• Playback Bug • Account Access</tspan>
+      <tspan x="370" dy="18">• Billing / Sub • Outage • Content</tspan>
+      <tspan x="370" dy="18">• Calibrated Confidence Score</tspan>
+    </text>
+  </g>
+
+  <!-- Pipeline Container 3: Dense Vector RAG -->
+  <g filter="url(#shadow)">
+    <rect x="350" y="340" width="240" height="190" rx="14" fill="url(#cardGrad)" stroke="#333333" stroke-width="1.5" />
+    <text x="370" y="375" fill="#1DB954" font-size="12" font-weight="700" letter-spacing="1px">STAGE 3: GROUNDING (RAG)</text>
+    <text x="370" y="402" fill="#FFFFFF" font-size="17" font-weight="700">Dense Vector Retrieval</text>
+    <text x="370" y="426" fill="#A7A7A7" font-size="12">
+      <tspan x="370" dy="0">• Model: all-MiniLM-L6-v2</tspan>
+      <tspan x="370" dy="18">• 4,081 Historical @SpotifyCares</tspan>
+      <tspan x="370" dy="18">• Pre-embedded Resolution Triples</tspan>
+      <tspan x="370" dy="18">• Top-3 Cosine Similarity Context</tspan>
+    </text>
+  </g>
+
+  <!-- Connection: Intent & RAG to Generation -->
+  <path d="M 590 215 L 650 250" stroke="#1DB954" stroke-width="2.5" marker-end="url(#arrow)" fill="none" />
+  <path d="M 590 435 L 650 310" stroke="#1DB954" stroke-width="2.5" marker-end="url(#arrow)" fill="none" />
+
+  <!-- Pipeline Container 4: Response Generation -->
+  <g filter="url(#shadow)">
+    <rect x="660" y="180" width="230" height="190" rx="14" fill="url(#cardGrad)" stroke="#333333" stroke-width="1.5" />
+    <text x="680" y="215" fill="#1DB954" font-size="12" font-weight="700" letter-spacing="1px">STAGE 4: GENERATION</text>
+    <text x="680" y="242" fill="#FFFFFF" font-size="17" font-weight="700">Grounded LLM Drafter</text>
+    <text x="680" y="266" fill="#A7A7A7" font-size="12">
+      <tspan x="680" dy="0">• In-context prompt assembly</tspan>
+      <tspan x="680" dy="18">• Grounded on Top-3 retrieved</tspan>
+      <tspan x="680" dy="18">• Spotify social voice &amp; sign-off</tspan>
+      <tspan x="680" dy="18">• Groq LPU Ultra-Low Latency</tspan>
+    </text>
+  </g>
+
+  <!-- Connection: Generation to Guardrails -->
+  <path d="M 890 275 L 940 275" stroke="#1DB954" stroke-width="2.5" marker-end="url(#arrow)" fill="none" />
+
+  <!-- Pipeline Container 5: Dual Guardrails -->
+  <g filter="url(#shadow)">
+    <rect x="950" y="140" width="200" height="270" rx="14" fill="url(#cardGrad)" stroke="#333333" stroke-width="1.5" />
+    <rect x="950" y="140" width="200" height="8" rx="4" fill="#F2994A" />
+    <text x="965" y="175" fill="#F2994A" font-size="11" font-weight="700" letter-spacing="1px">STAGE 5: DUAL GUARDS</text>
+    <text x="965" y="200" fill="#FFFFFF" font-size="16" font-weight="700">Safety &amp; Verification</text>
+    
+    <text x="965" y="230" fill="#1DB954" font-size="12" font-weight="700">A. Hallucination Check</text>
+    <text x="965" y="248" fill="#A7A7A7" font-size="11">Regex numeric / entity check vs ground truth</text>
+
+    <text x="965" y="290" fill="#EB5757" font-size="12" font-weight="700">B. Escalation Engine</text>
+    <text x="965" y="308" fill="#A7A7A7" font-size="11">Hybrid rule guard + LLM</text>
+    <text x="965" y="324" fill="#A7A7A7" font-size="11">• Double billing / refunds</text>
+    <text x="965" y="340" fill="#A7A7A7" font-size="11">• Account 2FA lockout</text>
+    <text x="965" y="356" fill="#A7A7A7" font-size="11">• Frustration / Multi-turn</text>
+  </g>
+
+  <!-- Outputs Branches -->
+  <path d="M 1050 410 L 1050 480 L 1010 480" stroke="#EB5757" stroke-width="2.5" marker-end="url(#arrowRed)" fill="none" />
+  <path d="M 1050 410 L 1050 560 L 1010 560" stroke="#1DB954" stroke-width="2.5" marker-end="url(#arrow)" fill="none" />
+
+  <!-- Output 1: Escalation -->
+  <g filter="url(#shadow)">
+    <rect x="740" y="445" width="260" height="70" rx="10" fill="#2A1414" stroke="#EB5757" stroke-width="1.5" />
+    <text x="760" y="473" fill="#EB5757" font-size="14" font-weight="700">🚨 ESCALATE TO HUMAN</text>
+    <text x="760" y="495" fill="#E0A5A5" font-size="11">Private Backstage Support Handoff</text>
+  </g>
+
+  <!-- Output 2: Public Resolution -->
+  <g filter="url(#shadow)">
+    <rect x="740" y="530" width="260" height="70" rx="10" fill="#122618" stroke="#1DB954" stroke-width="1.5" />
+    <text x="760" y="558" fill="#1DB954" font-size="14" font-weight="700">✅ DISPATCH PUBLIC REPLY</text>
+    <text x="760" y="580" fill="#A3D9B1" font-size="11">Verified Grounded Tweet Response</text>
+  </g>
+
+  <!-- Footer Stats -->
+  <rect x="50" y="590" width="650" height="50" rx="8" fill="#1A1A1A" stroke="#2D2D2D" />
+  <text x="70" y="621" fill="#FFFFFF" font-size="13" font-weight="600">Golden Set Benchmark:</text>
+  <text x="240" y="621" fill="#1DB954" font-size="13">80.0% Escalation Recall</text>
+  <text x="430" y="621" fill="#1DB954" font-size="13">4.83 / 5.00 Quality (LLM Judge)</text>
+  <text x="670" y="621" fill="#A7A7A7" font-size="12">~0.4s Latency</text>
+</svg>
