@@ -16,29 +16,25 @@ if hf_token:
     os.environ["HUGGINGFACE_HUB_TOKEN"] = hf_token
     os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "0"
 
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+def get_active_provider():
+    """Detect the active LLM provider dynamically from environment or available keys."""
+    provider = os.getenv("LLM_PROVIDER", "").strip().lower()
+    if provider in {"groq", "gemini", "hf", "ollama"}:
+        return provider
+    if os.getenv("GROQ_API_KEY"):
+        return "groq"
+    if os.getenv("GEMINI_API_KEY"):
+        return "gemini"
+    if os.getenv("HF_TOKEN"):
+        return "hf"
+    return "groq"
+
+LLM_PROVIDER = get_active_provider()
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
 HF_MODEL = os.getenv("HF_MODEL", "Qwen/Qwen2.5-7B-Instruct")
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "https://ollama.com").rstrip("/")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gpt-oss:20b")
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
-if LLM_PROVIDER == "hf":
-    HF_TOKEN = os.getenv("HF_TOKEN")
-    if not HF_TOKEN:
-        raise RuntimeError("LLM_PROVIDER=hf requires HF_TOKEN to be set in the environment.")
-    llm_client = InferenceClient(model=HF_MODEL, token=HF_TOKEN)
-elif LLM_PROVIDER == "groq":
-    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-    if not GROQ_API_KEY:
-        raise RuntimeError("LLM_PROVIDER=groq requires GROQ_API_KEY to be set in the environment.")
-    llm_client = None
-elif LLM_PROVIDER == "ollama":
-    OLLAMA_API_KEY = os.getenv("OLLAMA_API_KEY")
-    if not OLLAMA_API_KEY:
-        raise RuntimeError("LLM_PROVIDER=ollama requires OLLAMA_API_KEY to be set in the environment.")
-    llm_client = None
-else:
-    llm_client = genai.Client()
 embedder = SentenceTransformer('all-MiniLM-L6-v2')
 API_AVAILABLE = True
 
@@ -80,15 +76,21 @@ INTENTS = {
 
 
 def call_llm_with_retry(prompt, max_retries=5):
-    """Call the selected provider with bounded retries and no silent fallback."""
+    """Call the selected provider with bounded retries and dynamic configuration."""
+    provider = get_active_provider()
+    
     for attempt in range(max_retries):
         try:
-            if LLM_PROVIDER == "groq":
+            if provider == "groq":
+                groq_key = os.getenv("GROQ_API_KEY")
+                if not groq_key:
+                    raise RuntimeError("GROQ_API_KEY is not set. Please add GROQ_API_KEY to your Streamlit secrets or .env file.")
+                groq_model = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
                 response = httpx.post(
                     "https://api.groq.com/openai/v1/chat/completions",
-                    headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
+                    headers={"Authorization": f"Bearer {groq_key}"},
                     json={
-                        "model": GROQ_MODEL,
+                        "model": groq_model,
                         "messages": [{"role": "user", "content": prompt}],
                         "temperature": 0,
                     },
@@ -96,16 +98,25 @@ def call_llm_with_retry(prompt, max_retries=5):
                 )
                 response.raise_for_status()
                 return response.json()["choices"][0]["message"]["content"].strip()
-            if LLM_PROVIDER == "hf":
-                response = llm_client.chat_completion(
+
+            if provider == "hf":
+                hf_token = os.getenv("HF_TOKEN")
+                if not hf_token:
+                    raise RuntimeError("HF_TOKEN is not set. Please add HF_TOKEN to your Streamlit secrets or .env file.")
+                hf_client = InferenceClient(model=HF_MODEL, token=hf_token)
+                response = hf_client.chat_completion(
                     messages=[{"role": "user", "content": prompt}],
                     max_tokens=int(os.getenv("HF_MAX_TOKENS", "512")),
                 )
                 return response.choices[0].message.content.strip()
-            if LLM_PROVIDER == "ollama":
+
+            if provider == "ollama":
+                ollama_key = os.getenv("OLLAMA_API_KEY")
+                if not ollama_key:
+                    raise RuntimeError("OLLAMA_API_KEY is not set. Please add OLLAMA_API_KEY to your Streamlit secrets or .env file.")
                 response = httpx.post(
                     f"{OLLAMA_BASE_URL}/v1/chat/completions",
-                    headers={"Authorization": f"Bearer {OLLAMA_API_KEY}"},
+                    headers={"Authorization": f"Bearer {ollama_key}"},
                     json={
                         "model": OLLAMA_MODEL,
                         "messages": [{"role": "user", "content": prompt}],
@@ -115,25 +126,35 @@ def call_llm_with_retry(prompt, max_retries=5):
                 )
                 response.raise_for_status()
                 return response.json()["choices"][0]["message"]["content"].strip()
-            response = llm_client.interactions.create(model=GEMINI_MODEL, input=prompt)
-            return response.output_text.strip()
+
+            # Default: Gemini
+            gemini_model = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+            client = genai.Client()
+            try:
+                response = client.interactions.create(model=gemini_model, input=prompt)
+                return response.output_text.strip()
+            except Exception:
+                resp = client.models.generate_content(model=gemini_model, contents=prompt)
+                return resp.text.strip()
+
         except Exception as error:
             error_text = str(error).lower()
-            if LLM_PROVIDER == "groq" and isinstance(error, httpx.HTTPStatusError):
+            if provider == "groq" and isinstance(error, httpx.HTTPStatusError):
                 try:
                     err_json = error.response.json()
                     err_msg = err_json.get("error", {}).get("message", error.response.text)
                 except Exception:
                     err_msg = error.response.text
                 if error.response.status_code == 404:
+                    groq_model = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
                     raise RuntimeError(
                         f"Groq API error 404: {err_msg}. "
-                        f"Check that GROQ_MODEL in .env is valid (current: '{GROQ_MODEL}')."
+                        f"Check that GROQ_MODEL in secrets is valid (current: '{groq_model}')."
                     ) from error
                 if error.response.status_code == 401:
                     raise RuntimeError(
                         f"Groq rejected GROQ_API_KEY (401): {err_msg}. "
-                        "Check your GROQ_API_KEY in .env."
+                        "Check your GROQ_API_KEY in secrets."
                     ) from error
             if LLM_PROVIDER == "hf" and ("403" in error_text or "forbidden" in error_text):
                 raise RuntimeError(
