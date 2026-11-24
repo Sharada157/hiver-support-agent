@@ -3,6 +3,16 @@ import os
 import time
 import streamlit as st
 
+# Sync Streamlit Cloud secrets to environment variables if present
+try:
+    if hasattr(st, "secrets"):
+        for k in st.secrets:
+            v = st.secrets[k]
+            if isinstance(v, str):
+                os.environ[k] = v
+except Exception:
+    pass
+
 # Configure page layout and branding
 st.set_page_config(
     page_title="@SpotifyCares AI Support Agent",
