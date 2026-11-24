@@ -222,6 +222,8 @@ data/raw/*
 data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
+!data/processed/knowledge_base.csv
+!data/processed/kb_embeddings.npy
 
 outputs/runs/*
 outputs/baselines/*
