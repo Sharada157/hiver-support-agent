@@ -10,6 +10,12 @@ try:
             v = st.secrets[k]
             if isinstance(v, str):
                 os.environ[k] = v
+        # Prioritize Groq if a Groq key is present
+        if "GROQ_API_KEY" in st.secrets and st.secrets["GROQ_API_KEY"]:
+            os.environ["LLM_PROVIDER"] = "groq"
+            os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+            if "GROQ_MODEL" not in st.secrets:
+                os.environ["GROQ_MODEL"] = "openai/gpt-oss-20b"
 except Exception:
     pass
 
@@ -255,17 +261,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Import the pipeline
-@st.cache_resource(show_spinner="Loading NLP & Vector Embedding Models (SentenceTransformer)...")
-def get_pipeline():
-    # Ensure current directory is on sys.path
-    project_root = os.path.abspath(os.path.dirname(__file__))
-    if project_root not in sys.path:
-        sys.path.insert(0, project_root)
-    from src.pipeline import run_agent, retrieve_similar
-    return run_agent, retrieve_similar
+project_root = os.path.abspath(os.path.dirname(__file__))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
 try:
-    run_agent, retrieve_similar = get_pipeline()
+    from src.pipeline import run_agent, retrieve_similar
     pipeline_ready = True
 except Exception as e:
     st.error(f"Failed to load pipeline: {e}")
